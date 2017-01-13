@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1484345359857",
+      "Action": "kinesis:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1484345386010",
+      "Action": "firehose:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1484346301431",
+      "Action": "route53:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
