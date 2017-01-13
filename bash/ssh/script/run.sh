@@ -2,5 +2,5 @@
 
 SERVERS=servers.txt
 while read server; do
-    ssh -T $server < ./remote.sh >> stdout.txt
+    ssh -T $server < ./script.sh >> stdout.txt
 done < "$SERVERS"
