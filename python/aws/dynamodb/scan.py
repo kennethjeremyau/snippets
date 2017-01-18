@@ -10,7 +10,7 @@ def scan(tablename, callback, region='us-east-1', *args, **kwargs):
     items = table.scan()
 
     retries = 0
-    while 1:
+    while True:
         try:
             item = next(items)
         except dynamodb2.exceptions.ProvisionedThroughputExceededException:
