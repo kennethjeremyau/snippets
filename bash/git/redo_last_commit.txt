@@ -1,0 +1,5 @@
+git commit -m "Bad commit"
+git reset HEAD~
+# Edit as necessary.
+git add ...
+git commit -c ORIG_HEAD
