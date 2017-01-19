@@ -7,7 +7,7 @@ import multiprocessing
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-n', help='number of workers', default=1,
+    parser.add_argument('-n', help='number of workers', default=10,
         dest='num_workers', type=int)
     args = parser.parse_args()
 
@@ -25,7 +25,7 @@ def main():
 
 
 def start_worker(id):
-    with open('{}.txt'.format(id), 'w') as f:
+    with open('output.txt'.format(id), 'a') as f:
         writer = csv.writer(f)
         writer.writerow(['Output for worker {}.'.format(id)])
 
