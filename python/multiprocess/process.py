@@ -19,7 +19,6 @@ def main():
         )
         workers.append(worker)
         worker.start()
-
     for worker in workers:
         worker.join()
 
