@@ -1,0 +1,2 @@
+git commit -m "Bad commit"
+git reset --hard HEAD~1
