@@ -1,0 +1,20 @@
+Header 1            # this is an example
+Header 2            ## this is an example
+Header 3            ### this is an example
+Header 4            #### this is an example ####
+Header 5            ##### this is an example #####
+Header 6            ###### this is an example ######
+Bullet lists        * this
+                    * is
+                    - an
+                    - example
+Numbered lists      1. this is
+                    2. an example
+Mixed lists         1. this
+                    2. is
+                        * an
+                        * example
+Emphasis            *this is an example*
+Strong              **this is an example**
+Inline links        this is an [link](http://example.com "example")
+Inline images       this is an ![Alt](/example.png "example")
