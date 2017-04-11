@@ -1,5 +1,19 @@
 var http = require('http');
 
-var req = http.get('http://google.com', (res) => {
-    console.log(res.statusCode);
+var opts = {
+    hostname: 'jsonplaceholder.typicode.com',
+    path: '/posts/1'
+};
+var req = http.request(opts, (res) => {
+    var body = '';
+    res.on('data', (chunk) => {
+        body += chunk;
+    });
+    res.on('end', () => {
+        console.log(body);
+    });
 });
+req.on('error', (e) => {
+    console.error(e);
+});
+req.end();
