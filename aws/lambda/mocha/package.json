@@ -1,0 +1,10 @@
+{
+  "description": "A sample mocha test environment.",
+  "dependencies": {
+    "mocha": "^3.4.2"
+  },
+  "private": true,
+  "scripts": {
+    "test": "mocha tests --recursive"
+  }
+}
