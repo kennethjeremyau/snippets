@@ -7,8 +7,8 @@ build: clean
 clean:
 	rm -rf build build.zip
 create: build
-	aws lambda create-function --function-name FUNCTION_NAME --runtime python2.7 --role ROLE_ARN --handler handler.handler --region us-east-1 --zip-file fileb://build.zip
+	aws lambda create-function --function-name FUNCTION_NAME --runtime python2.7 --role ROLE_ARN --handler handler.handler --region us-east-1 --timeout 300 --zip-file fileb://build.zip
 devenv:
 	virtualenv devenv
-upload: build
+update: build
 	aws lambda update-function-code --function-name FUNCTION_NAME --zip-file fileb://build.zip
