@@ -5,5 +5,5 @@ function e {
     return 1
 }
 
-e hello\ world
-echo $?
+VAR=$(e hello\ world)
+echo $VAR
