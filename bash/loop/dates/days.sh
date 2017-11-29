@@ -5,5 +5,5 @@
 d=2017-04-06
 while [ "$d" != 2017-07-31 ]; do 
     echo $d
-    d=$(date -I -d "+1 day")
+    d=$(date -I -d "${d}+1 day")
 done
