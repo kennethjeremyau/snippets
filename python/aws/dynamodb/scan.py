@@ -1,14 +1,20 @@
 #!/usr/bin/env python
 
-from boto import dynamodb2
-from boto.dynamodb2.table import Table
 import argparse
+import boto3
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--segment', default=0, type=int)
 parser.add_argument('--total-segments', default=1, type=int)
 args = parser.parse_args()
 
-table = Table('tablename', connection=dynamodb2.connect_to_region('us-east-1'))
-for row in table.scan(segment=args.segment, total_segments=args.total_segments):
-    print row['id']
+dynamodb = boto3.client('dynamodb', region_name='us-east-1')
+table = dynamodb.get_paginator('scan')
+
+for page in table.paginate(
+    TableName='tablename',
+    Segment=args.segment,
+    TotalSegments=args.total_segments
+):
+    for item in page['Items']:
+        print str(item['id']['S'])
