@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Uses GNU date which is not available by default on Mac.
-d=$(date -I -d "2017-01-01 - 1 month")
+d=$(date -I -d "2017-01-01 - 1 month" 2>/dev/null || date -jf "%Y-%m-%d" -v -1m 2017-01-01)
 echo $d
 
 IFS=" :-" read Y M D h m s <<<"YYYY-MM-DD hh:mm:ss"
