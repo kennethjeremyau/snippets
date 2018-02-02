@@ -1,11 +1,11 @@
 #!/bin/bash
 
-AWS_REGION="us-east-1"
-NAMESPACE="Analytics"
-NAME="diskspace"
-VALUE=$(df / | awk 'END{str=$5; sub(/%/, "", str); print str}')
+AWS_REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
+NAMESPACE="EC2"
+NAME="DiskSpacePercent"
+VALUE=$(df / | awk 'END{print gensub(/%/, "", "", $5)}')
 UNIT="Percent"
-DIMENSIONS="App=viewcount"
+DIMENSIONS="Tag=impressions"
 AWS_DEFAULT_REGION=$AWS_REGION aws cloudwatch put-metric-data \
     --namespace $NAMESPACE \
     --metric-name $NAME \
