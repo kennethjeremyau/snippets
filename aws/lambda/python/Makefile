@@ -1,4 +1,4 @@
-all: upload
+all: update
 build: clean
 	mkdir build
 	cp *.py build

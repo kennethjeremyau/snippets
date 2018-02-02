@@ -2,7 +2,7 @@
 
 AWS_REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
 NAMESPACE="EC2"
-NAME="DiskSpacePercent"
+NAME="DiskUsedPercent"
 VALUE=$(df / | awk 'END{print gensub(/%/, "", "", $5)}')
 UNIT="Percent"
 DIMENSIONS="Tag=impressions"
