@@ -1,0 +1,11 @@
+[{
+    "type": "add",
+    "id": "document1",
+    "fields": {
+        "field1": 1,
+        "field2": "string"
+    }
+},{
+    "type": "delete",
+    "id": "document2"
+}]
