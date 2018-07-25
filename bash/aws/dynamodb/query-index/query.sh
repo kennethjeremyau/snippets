@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-TABLE_NAME='table'
-INDEX_NAME='index'
-PROJECTION_EXPRESSION='key1, key2'
-KEY_CONDITION_EXPRESSION='key1 = :v1 and key2 > :v2'
-FILTER_EXPRESSION='col1 = :v2'
-EXPRESSION_ATTRIBUTE_VALUES='{":v1":{"S": "value1"}, ":v2":{"N": "0"}}'
-#EXPRESSION_ATTRIBUTE_VALUES='file://expression-attributes.json'
-aws dynamodb query --table-name "$TABLE_NAME" --index-name "$INDEX_NAME" --projection-expression "$PROJECTION_EXPRESSION" --key-condition-expression "$KEY_CONDITION_EXPRESSION" --filter-expression "$FILTER_EXPRESSION" --expression-attribute-values "$EXPRESSION_ATTRIBUTE_VALUES"
+aws dynamodb query \
+    --table-name 'table' \
+    --index-name 'index' \
+    --projection-expression 'key1, key2' \
+    --key-condition-expression 'key1 = :v1 and key2 > :v2' \
+    --filter-expression "col1 = :v2" \
+    --expression-attribute-values '{":v1":{"S": "value1"}, ":v2":{"N": "0"}}'
+    #--expression-attribute-values 'file://expression-attributes.json'
