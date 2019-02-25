@@ -13,7 +13,10 @@ def main():
     parser.add_argument('--int', default=0, dest='integer', type=int)
     # result is stored in 'args.choice'.
     parser.add_argument('--choice', choices=['one', 'two'], default='one')
+    # dashes are replaced with underscores.
+    parser.add_argument('--multi-word')
     args = parser.parse_args()
 
+    print args.multi_word
 if __name__ == '__main__':
     main()
