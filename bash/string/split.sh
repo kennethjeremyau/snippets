@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-IN='test|0'
-IFS='|' read -ra ARRAY <<< "$IN"
-for i in "${ARRAY[@]}"; do
-    echo "$i"
-done
+echo "test|0" | cut -d "|" -f 1
+echo "test|0" | cut -d "|" -f 2
