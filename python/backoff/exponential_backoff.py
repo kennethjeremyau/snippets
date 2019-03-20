@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-import functools
 import time
 
 def exponential_backoff(func):
-    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         MAX_ATTEMPTS = 5
         attempt = 1

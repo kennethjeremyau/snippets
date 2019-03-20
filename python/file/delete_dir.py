@@ -3,7 +3,4 @@
 import os
 import shutil
 
-try:
-    shutil.rmtree(os.getcwd() + '/path/to/folder')
-except:
-    pass
+shutil.rmtree(os.getcwd() + '/path/to/folder', ignore_errors=True)
