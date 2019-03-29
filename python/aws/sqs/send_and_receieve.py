@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import boto3
+import json
 
 sqs = boto3.resource('sqs')
 source = sqs.get_queue_by_name(QueueName='QUEUE')
