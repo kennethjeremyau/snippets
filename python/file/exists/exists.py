@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 
-import os.path
+import os
 print os.path.isfile('input.txt')
