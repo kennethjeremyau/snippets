@@ -2,8 +2,9 @@
 
 import Queue
 import threading
+import time
 
-NUM_WORKERS = 10
+NUM_WORKERS = 2
 
 
 def worker(done):
@@ -11,6 +12,7 @@ def worker(done):
         try:
             item = q.get_nowait()
             print item
+            time.sleep(1)
             q.task_done()
         except Queue.Empty:
             pass
@@ -25,10 +27,14 @@ for i in range(NUM_WORKERS):
     #t.daemon = True
     t.start()
 
-for i in range(100):
+for i in range(10):
     q.put(i)
 
-q.join()
+# If you don't require any other condition, can use join instead of polling.
+#q.join()
+while not q.empty():
+    time.sleep(0.1)
+
 print "thread count: {}".format(threading.active_count())
 
 done_event.set()
