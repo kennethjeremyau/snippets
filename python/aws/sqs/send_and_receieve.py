@@ -17,5 +17,9 @@ while True:
 
         try:
             sink.send_message(MessageBody=json.dumps(payload))
+            source.delete_messages(Entries=[{
+                'Id': msg.message_id,
+                'ReceiptHandle': msg.receipt_handle
+            }])
         except Exception as e:
             print ('ERROR {}'.format(e))
