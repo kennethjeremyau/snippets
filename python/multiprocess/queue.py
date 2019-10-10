@@ -38,3 +38,5 @@ while not q.empty():
 print "thread count: {}".format(threading.active_count())
 
 done_event.set()
+
+# Main thread still waits for threads to finish processing last items.
