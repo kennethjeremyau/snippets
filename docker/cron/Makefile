@@ -3,14 +3,14 @@ SERVICE=cron
 build: remove
 	docker-compose build
 
-enter:
-	docker-compose exec $(SERVICE) /bin/sh -l
+down:
+	docker-compose down
 
-remove:
-	docker-compose rm -f $(SERVICE)
+shell:
+	docker-compose exec -it $(SERVICE) /bin/sh
 
-run:
+up:
 	docker-compose up $(SERVICE)
 
 .DEFAULT_GOAL: build
-.PHONY: build, enter, remove, run
+.PHONY: build down shell up
