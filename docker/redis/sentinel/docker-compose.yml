@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  master:
+    image: redis:5.0.6-alpine3.10
+
+  slave:
+    image: redis:5.0.6-alpine3.10
+    command: redis-server --slaveof master 6379
+    depends_on:
+      - master
+
+  sentinel:
+    build: .
+    depends_on:
+      - master
+      - slave
