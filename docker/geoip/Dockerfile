@@ -11,4 +11,4 @@ COPY --from=0 /root/geoipupdate-4.1.5/build/geoipupdate /opt/maxmind/geoipupdate
 COPY GeoIP.conf /usr/local/etc/GeoIP.conf
 RUN mkdir -p /usr/local/share/GeoIP \
     && echo '0 0 * * 1 /opt/maxmind/geoipupdate' >> /var/spool/cron/crontabs/root
-CMD ["crond", "-f"]
+CMD /opt/maxmind/geoipupdate && /usr/sbin/crond -f
