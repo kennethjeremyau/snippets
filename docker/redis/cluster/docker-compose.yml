@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  bastion:
+    build: bastion
+    depends_on:
+      - redis
+
+  redis:
+    build: redis
