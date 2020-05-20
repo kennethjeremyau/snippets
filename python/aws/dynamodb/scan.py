@@ -13,6 +13,10 @@ table = dynamodb.get_paginator('scan')
 
 for page in table.paginate(
     TableName='tablename',
+    ExpressionAttributeNames={ '#a': 'a', '#b': 'b' },
+    ExpressionAttributeValues={ ':c': {'N': '1'}, ':d': {'S': 'd'} },
+    FilterExpression='#a >= :c and #b = :d',
+    ProjectionExpression="#a,#b",
     Segment=args.segment,
     TotalSegments=args.total_segments
 ):
