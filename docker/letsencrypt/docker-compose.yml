@@ -1,0 +1,29 @@
+version: "3"
+services:
+    cron:
+        build: .
+        container_name: letsencrypt
+        restart: always
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+    init:
+        image: certbot/certbot:arm32v6-v1.5.0
+        command: [
+            "certonly",
+            "--webroot",
+            "--webroot-path=/var/www",
+            "--email", "kennethjeremyau@gmail.com",
+            "--agree-tos",
+            "--no-eff-email",
+            "-d", "resora.net",
+        ]
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /var/www:/var/www
+    renew:
+        image: certbot/certbot:arm32v6-v1.5.0
+        container_name: letsencrypt_renew
+        command: ["renew"]
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /var/www:/var/www
