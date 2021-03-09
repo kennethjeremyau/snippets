@@ -3,8 +3,11 @@
 import sys
 import traceback
 
-try:
+def inner():
     raise Exception('an exception message')
+
+try:
+    inner()
 except Exception as e:
     sys.stderr.write('ERROR {}\n'.format(e))
-    traceback.print_last()
+    traceback.print_exc()
