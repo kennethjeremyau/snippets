@@ -1,5 +1,5 @@
 # Start workers
-`cat input.txt | xargs -P2 -I{} ./each.sh {} &`
+`seq 1 10 | xargs -P2 -I{} ./each.sh {} &`
 
 # Increase worker count
 `kill -USR1 <PID>`
