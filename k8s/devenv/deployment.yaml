@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scratch
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scratch
+  template:
+    metadata:
+      labels:
+        app: scratch
+    spec:
+      containers:
+      - name: kau
+        image: python:3.9.2-slim-buster
+        command: ["tail", "-f"]
+        workingDir: /root
