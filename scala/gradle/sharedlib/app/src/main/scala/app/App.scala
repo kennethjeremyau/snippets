@@ -3,6 +3,6 @@
  */
 package app
 
-class Library {
-  def someLibraryMethod(): Boolean = true
+class App {
+  def someAppMethod(): Boolean = true
 }

@@ -8,9 +8,9 @@ import org.junit.runner.RunWith
 import org.scalatestplus.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class LibrarySuite extends AnyFunSuite {
-  test("someLibraryMethod is always true") {
-    def library = new Library()
-    assert(library.someLibraryMethod)
+class AppSuite extends AnyFunSuite {
+  test("someAppMethod is always true") {
+    def app = new App()
+    assert(app.someAppMethod)
   }
 }
