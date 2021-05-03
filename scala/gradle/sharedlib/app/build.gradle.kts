@@ -31,4 +31,6 @@ dependencies {
 
     // Need scala-xml at test runtime
     testRuntimeOnly("org.scala-lang.modules:scala-xml_2.13:1.2.0")
+
+    implementation(files("../lib/build/libs/lib.jar"))
 }

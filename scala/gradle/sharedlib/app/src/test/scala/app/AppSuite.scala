@@ -6,11 +6,17 @@ package app
 import org.scalatest.funsuite.AnyFunSuite
 import org.junit.runner.RunWith
 import org.scalatestplus.junit.JUnitRunner
+import lib.Library
 
 @RunWith(classOf[JUnitRunner])
 class AppSuite extends AnyFunSuite {
   test("someAppMethod is always true") {
     def app = new App()
     assert(app.someAppMethod)
+  }
+
+  test("someLibMethod is always true") {
+    def lib = new Library()
+    assert(lib.someLibraryMethod)
   }
 }
