@@ -15,6 +15,9 @@ def main():
     parser.add_argument('--choice', choices=['one', 'two'], default='one')
     # dashes are replaced with underscores.
     parser.add_argument('--multi-word')
+    # array result stored in 'args.multiple_arguments'.
+    # can use nargs='*' or nargs='+' also.
+    parser.add_argument('-m', '--multiple-arguments', action='append', nargs=2)
     parser.add_argument('noflag')
     args = parser.parse_args()
 
