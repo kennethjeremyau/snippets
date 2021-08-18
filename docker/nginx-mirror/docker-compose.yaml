@@ -1,0 +1,13 @@
+version: '3'
+services:
+  curl:
+    image: alpine:3.13.5
+    command: sh -c 'apk add curl && tail -f /dev/null'
+  production:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+  mirror:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.mirror
