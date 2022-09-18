@@ -47,11 +47,12 @@ function main() {
 function init(ctx) {
     initCells();
     drawGridLines(ctx);
+    drawCells(ctx);
 }
 
 /**
 * initCells allocates and initializes the game state 2D array of cells.
-* All cells start of dead.
+* All cells start off dead.
 */
 function initCells() {
     for (var i = 0; i < HEIGHT; i++) {
@@ -74,7 +75,9 @@ function loop(timestamp) {
         return;
     }
 
-    drawGridLines(gameState.ctx);
+    var ctx = gameState.ctx;
+    drawGridLines(ctx);
+    drawCells(ctx);
 
     gameState.lastUpdateTimestamp = timestamp;
 }
@@ -99,7 +102,13 @@ function drawGridLines(ctx) {
 * drawCells draws the cells on the canvas.
 */
 function drawCells(ctx) {
-    // TODO
+    for (var i = 0; i < HEIGHT; i++) {
+        for (var j = 0; j < WIDTH; j++) {
+            if (gameState.cells[i][j] == CELLSTATE_ALIVE) {
+                ctx.fillRect(j * CELLPADDING, i * CELLPADDING, CELLPADDING, CELLPADDING);
+            }
+        }
+    }
 }
 
 window.onload = main;
