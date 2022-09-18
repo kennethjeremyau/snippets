@@ -27,7 +27,7 @@ def preorder(node):
     while len(stack) > 0:
         n = stack.pop()
         print(n.data)
-        if n.right:
+        if n.right: # Append right first!
             stack.append(n.right)
         if n.left:
             stack.append(n.left)

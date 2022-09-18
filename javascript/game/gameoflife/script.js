@@ -1,7 +1,9 @@
-var CELLPADDING = 5
-var DISPLAY_WIDTH = 100
-var DISPLAY_HEIGHT = 100
-var FPS = 1
+var DISPLAY_WIDTH = 100;
+var DISPLAY_HEIGHT = 100;
+var CELLPADDING = 5;
+var WIDTH = Math.floor(DISPLAY_WIDTH / CELLPADDING);
+var HEIGHT = Math.floor(DISPLAY_HEIGHT / CELLPADDING);
+var FPS = 1;
 
 var gameState = {
     ctx: null,
@@ -18,7 +20,7 @@ function main() {
 }
 
 function init(ctx) {
-    drawGridLines(ctx, 0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, CELLPADDING);
+    drawGridLines(ctx);
 }
 
 function initCells() {
@@ -32,19 +34,19 @@ function loop(timestamp) {
         return;
     }
 
-    drawGridLines(gameState.ctx, 0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT, CELLPADDING);
+    drawGridLines(gameState.ctx);
 
     gameState.lastUpdateTimestamp = timestamp;
 }
 
-function drawGridLines(ctx, topX, topY, width, height, padding) {
-    for (var x = topX; x < width; x += padding) {
-        ctx.moveTo(x + padding, topX);
-        ctx.lineTo(x + padding, height);
+function drawGridLines(ctx) {
+    for (var x = 0; x < DISPLAY_WIDTH; x += CELLPADDING) {
+        ctx.moveTo(x + CELLPADDING, 0);
+        ctx.lineTo(x + CELLPADDING, DISPLAY_HEIGHT);
     }
-    for (var y = topY; y < height; y += padding) {
-        ctx.moveTo(topY, y + padding);
-        ctx.lineTo(width, y + padding);
+    for (var y = 0; y < DISPLAY_HEIGHT; y += CELLPADDING) {
+        ctx.moveTo(0, y + CELLPADDING);
+        ctx.lineTo(DISPLAY_WIDTH, y + CELLPADDING);
     }
     ctx.strokeStyle = "lightgrey";
     ctx.stroke();
@@ -55,3 +57,4 @@ function drawCells(ctx) {
 }
 
 window.onload = main;
+
