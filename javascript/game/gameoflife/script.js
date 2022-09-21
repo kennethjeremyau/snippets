@@ -27,7 +27,7 @@ var CELLSTATE_ALIVE = 1;
 var gameState = {
     ctx: null,
     cells: [],
-    lastUpdateTimestamp: 0
+    lastUpdateTimestamp: 0,
 };
 
 /**
@@ -106,7 +106,6 @@ function drawGridLines(ctx) {
 function updateCellStates() {
     var cells = gameState.cells;
     var futureCells = [];
-    initCells(futureCells);
     for (var i = 0; i < HEIGHT; i++) {
         var row = [];
         for (var j = 0; j < WIDTH; j++) {
@@ -114,8 +113,8 @@ function updateCellStates() {
             var neighborCount = countNeighbors(i, j);
             if (cellState == CELLSTATE_ALIVE && neighborCount < 2) {
                 row[j] = CELLSTATE_DEAD;
-            } else if (cellState == CELLSTATE_ALIVE && neighborCount > 3) {
-                row[j] = CELLSTATE_DEAD;
+            } else if (cellState == CELLSTATE_ALIVE && (neighborCount == 2 || neighborCount == 3)) {
+                row[j] = CELLSTATE_ALIVE;
             } else if (cellState == CELLSTATE_DEAD && neighborCount == 3) {
                 row[j] = CELLSTATE_ALIVE;
             }
@@ -128,7 +127,7 @@ function updateCellStates() {
 /**
  * countNeighbors counts the number of living cells around the current cell.
  */
-function countNeighbors(x, y) {
+function countNeighbors(y, x) {
     var cells = gameState.cells;
     var count = 0;
 
@@ -158,7 +157,7 @@ function countNeighbors(x, y) {
     }
 
     // Bottom left.
-    if (x < 0 && y < HEIGHT - 1 && cells[y + 1][x - 1] == CELLSTATE_ALIVE) {
+    if (x > 0 && y < HEIGHT - 1 && cells[y + 1][x - 1] == CELLSTATE_ALIVE) {
         count++;
     }
 
