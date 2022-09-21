@@ -117,6 +117,8 @@ function updateCellStates() {
                 row[j] = CELLSTATE_ALIVE;
             } else if (cellState == CELLSTATE_DEAD && neighborCount == 3) {
                 row[j] = CELLSTATE_ALIVE;
+            } else {
+                row[j] = CELLSTATE_DEAD
             }
         }
         futureCells[i] = row;
