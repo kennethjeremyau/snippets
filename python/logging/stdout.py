@@ -23,5 +23,7 @@ logging.info('this is an info message')
 logging.warning('this is a warning message')
 logging.error('this is an error message')
 
+
+# In module code:
 logger = logging.getLogger(__name__)
 logger.info('this is another info message')

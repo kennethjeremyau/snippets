@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from datetime import date
 
 d0 = date(2017, 8, 23)
 d1 = date(2017, 6, 1)
 delta = d0 - d1
-print delta.days
+print(delta.days)
