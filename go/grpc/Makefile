@@ -5,6 +5,9 @@
 clean:
 	rm pb/*.pb.go
 
+client:
+	go run client/client.go
+
 fmt:
 	go fmt ./...
 
@@ -16,6 +19,7 @@ run: pb
 
 .PHONY: \
 	clean \
+	client \
 	fmt \
 	pb \
 	run
