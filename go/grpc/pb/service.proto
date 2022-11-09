@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "grpc/pb";
+
+package api;
+
+import "request.proto";
+import "response.proto";
+
+service Api {
+    rpc Get(Request) returns (Response) {}
+}
