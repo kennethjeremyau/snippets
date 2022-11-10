@@ -1,7 +1,9 @@
 package main
 
 import (
-    "context"
+	"context"
+	"flag"
+	"fmt"
 	"log"
 	"net"
 
@@ -9,19 +11,25 @@ import (
 	"scratch/grpc/pb"
 )
 
+var (
+	port = flag.Int("port", 8080, "Server port")
+)
+
 type server struct {
 	pb.UnimplementedApiServer
 }
 
 func (s *server) Get(ctx context.Context, req *pb.Request) (*pb.Response, error) {
-    log.Printf("Received %v", req.GetText())
-    return &pb.Response{Text: req.GetText()}, nil
+	log.Printf("Received %v", req.GetText())
+	return &pb.Response{Text: req.GetText()}, nil
 }
 
 func main() {
 	log.Print("Starting server")
 
-	conn, err := net.Listen("tcp", ":8080")
+	flag.Parse()
+
+	conn, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
