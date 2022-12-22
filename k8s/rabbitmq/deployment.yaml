@@ -1,0 +1,8 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq-example
+spec:
+  replicas: 1  # Default 1.
+  service:
+    type: LoadBalancer  # Allow connections from outside cluster. See README.
