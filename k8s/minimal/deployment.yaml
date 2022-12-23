@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: scratch
-  namespace: dev
+  name: example-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: scratch
+      app: example-app
   template:
     metadata:
       labels:
-        app: scratch
+        app: example-app
     spec:
       containers:
-      - name: kau
-        image: python:3.9.2-slim-buster
+      - name: example-app-container
+        image: alpine
         command: ["tail", "-f"]
         workingDir: /root
