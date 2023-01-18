@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq-dev
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-dev
+    spec:
+      containers:
+      - name: rabbitmq-dev
+        image: localhost:5000/rabbitmq-pika-client
+        command: ["tail", "-f"]
+        workingDir: /scripts
