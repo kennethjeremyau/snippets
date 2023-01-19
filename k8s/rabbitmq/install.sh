@@ -8,7 +8,7 @@ minikube status || minikube start
 kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"
 
 # Create the RabbitMQ servers.
-kubectl apply -f definition.yaml
+kubectl apply -f deployment.yaml
 
 # Display GUI credentials
 echo GUI Username:

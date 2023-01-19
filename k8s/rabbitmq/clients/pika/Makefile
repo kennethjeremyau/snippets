@@ -5,4 +5,5 @@ build:
 build-registry:
 	docker run -d -p 5000:5000 --restart=always --name registry registry:2
 up: build
-	kubectl apply -f deployment.yaml
+	kubectl apply -f deployment.yaml \
+		&& kubectl rollout restart deployment rabbitmq-dev
