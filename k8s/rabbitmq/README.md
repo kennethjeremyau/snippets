@@ -11,4 +11,4 @@
 1. `make up`
 1. `kubectl get pods`
 1. `kubectl exec -it <POD_NAME> -- /bin/bash`
-1. When finished: `eval $(minikube docker-env-u)`
+1. When finished: `eval $(minikube docker-env -u)`
