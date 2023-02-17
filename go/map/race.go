@@ -18,20 +18,20 @@ func main() {
 
     for i := 1; i <= 5; i++ {
         wg.Add(1)
-	    go func(ctx context.Context) {
+	    go func(id int) {
             defer wg.Done()
             for {
-                fmt.Printf("looping %v\n", i)
-                //raceMap[i] = fmt.Sprintf("value %v", i)
-                raceMap.Store(i, fmt.Sprintf("value %v", i))
+                fmt.Printf("looping %v\n", id)
+                //raceMap[id] = fmt.Sprintf("value %v", id)
+                raceMap.Store(i, fmt.Sprintf("value %v", id))
                 select {
                 case <-ctx.Done():
-                    fmt.Printf("quitting %v\n", i)
+                    fmt.Printf("quitting %v\n", id)
                     return
                 default:
                 }
             }
-	    }(ctx)
+	    }(i)
     }
 
     wg.Wait()
