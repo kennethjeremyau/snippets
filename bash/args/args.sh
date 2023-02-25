@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
 HELP="false"
-NUMBER=0
 
-while [[ $# -gt 0 ]]; do
-    arg="$1"
-    case $arg in
+while [ "$#" -gt 0 ]; do
+    case $1 in
     -h|--help)
         HELP="true"
         ;;
@@ -13,11 +11,18 @@ while [[ $# -gt 0 ]]; do
         NUMBER="$2"
         shift
         ;;
-    *)
-        # Unknown option
+    -*|--*)
+        echo "ERROR unknown option $1" 1>&2
+        exit 1
         ;;
     esac
     shift
 done
+
+[ -z "$NUMBER" ] && {
+    echo ERROR number required 1>&2
+    exit 1
+}
+
 echo HELP = "${HELP}"
 echo NUMBER = "${NUMBER}"
