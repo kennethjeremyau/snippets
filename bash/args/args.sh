@@ -1,28 +1,33 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-HELP="false"
+function usage {
+    echo "Usage: $(basename $0)" >&2
+}
 
 while [ "$#" -gt 0 ]; do
     case $1 in
     -h|--help)
-        HELP="true"
+        usage
+        exit 0
         ;;
     -n|--number)
         NUMBER="$2"
-        shift
+        shift # past argument
+        shift # past value
         ;;
     -*|--*)
-        echo "ERROR unknown option $1" 1>&2
+        echo "ERROR unknown option $1" >&2
         exit 1
         ;;
+    *)
+        echo "POSITIONAL ARGUMENT $1"
+        shift # past value
     esac
-    shift
 done
 
 [ -z "$NUMBER" ] && {
-    echo ERROR number required 1>&2
+    echo ERROR number required >&2
     exit 1
 }
 
-echo HELP = "${HELP}"
 echo NUMBER = "${NUMBER}"
